@@ -1,0 +1,49 @@
+<!-- Required boilerplate. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page metadata. -->
+    <title>Generic Dashboard</title>
+    <meta name="description" content="A dashboard service.">
+    <meta name="author" content="Tim Clancy">
+
+    <!-- Stylesheets for the page. -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+
+  <!-- The page body with a simple dashboard framework. -->
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+            <h1>
+              Project <small>Dashboard</small>
+            </h1>
+          </div>
+
+          <!-- A simple content panel. -->
+          <div class="panel panel-default">
+            <h2>
+              An Empty Panel
+            </h2>
+
+            <button id="button">Button</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Client-side scripts for this page. -->
+		<script src="https://www.paypal.com/sdk/js?client-id=<%= clientID %>"> </script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>

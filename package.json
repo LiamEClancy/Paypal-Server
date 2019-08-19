@@ -1,0 +1,35 @@
+{
+  "name": "paypal-server",
+  "version": "1.0.0",
+  "description": "A server that can be used to send money through Paypal.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimTinkers/General-Express-Server.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "server"
+  ],
+  "author": "Liam Clancy",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/TimTinkers/General-Express-Server/issues"
+  },
+  "homepage": "https://github.com/TimTinkers/General-Express-Server#readme",
+  "standard": {
+    "globals": [
+      "$",
+      "THREE"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1"
+  }
+}
