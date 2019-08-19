@@ -7,6 +7,15 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const paypalCheckout = require('@paypal/checkout-server-sdk');
+const AWS = require('aws-sdk');
+
+// Configuring AWS account.
+AWS.config.update({ region: 'us-east-2' });
+let accessKey = process.env.AWS_ACCESS_KEY;
+let secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+let credentials = new AWS.Credentials(accessKey, secretAccessKey);
+AWS.config.credentials = credentials;
+let docClient = new AWS.DynamoDB.DocumentClient();
 
 // Middleware for enabling async routes with Express.
 const asyncMiddleware = fn => (req, res, next) => {
@@ -67,13 +76,31 @@ app.post('/create-transaction', asyncMiddleware(async (req, res, next) => {
 
 app.post('/approve-transaction', asyncMiddleware(async (req, res, next) => {
 	const orderID = req.body.orderID;
-
+	console.log(req.body);
 	const request = new paypalCheckout.orders.OrdersCaptureRequest(orderID);
 	request.requestBody({});
 
 	try {
 		const capture = await client.execute(request);
 		console.log(capture);
+		let params = {
+			TableName: 'OrderHistory',
+			Item: {
+				UserID: '003',
+				Orders: [{
+					Amount: '20',
+					OrderID: orderID,
+					Date: new Date().toString()
+				}]
+			}
+		};
+		docClient.put(params, function (error, data) {
+			if (error) {
+				console.log('Error', error);
+			} else {
+				console.log('Success', data);
+			}
+		});
 		res.sendStatus(200);
 	}	catch (error) {
 		console.error(error);
