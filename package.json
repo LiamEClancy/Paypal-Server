@@ -24,10 +24,12 @@
   "standard": {
     "globals": [
       "$",
-      "THREE"
+      "THREE",
+			"paypal"
     ]
   },
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.1",
     "dotenv": "^8.1.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1"
